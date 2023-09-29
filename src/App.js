@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import "./App.css";
+import Layout from "./components/layout/Layout";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import ErrorPage from "./pages/ErrorPage";
+import SignupPage from "./pages/SignupPage";
+import AuthContext from "./store/AuthContext";
+import EnvironmentPage from "./pages/EnvironmentPage";
 
 function App() {
+  const authContext = useContext(AuthContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/login"
+            element={authContext.isLoggedIn ? <HomePage /> : <LoginPage />}
+          />
+          <Route
+            path="/signup"
+            element={authContext.isLoggedIn ? <HomePage /> : <SignupPage />}
+          />
+          <Route path="/environment" element={<EnvironmentPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Layout>
+    </React.Fragment>
   );
 }
 

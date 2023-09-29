@@ -1,0 +1,44 @@
+.div1 {
+  display: block;
+  height: 100%;
+  width: 200px;
+  background-color: #fff;
+  position: fixed !important;
+
+  overflow: auto;
+}
+
+.div2 {
+  top: 0;
+  padding-bottom: 0;
+  position: fixed;
+  height: 100%;
+  width: 220px;
+  padding-top: 80px;
+  background-color: transparent;
+}
+
+.div3 {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(224, 223, 223);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-top: 30px;
+}
+.Ulist {
+  list-style-type: none;
+}
+            
+.Ulist li{
+ padding-left :6px;
+ padding-bottom: 8px;
+font-size: 15px;
+color: rgb(39, 39, 39);
+}
+.Ulist li h3{
+  font-size: 20px;
+  padding-top: 6px;
+  padding-bottom: -2px;
+  color: black;
+}

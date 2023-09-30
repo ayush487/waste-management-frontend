@@ -77,6 +77,9 @@
   text-decoration: none;
   user-select: none;
 }
+span.dropbtn {
+  color: white;
+}
 .dropbtn:hover {
   background-color: chartreuse;
   color: rgb(0, 0, 0);
@@ -93,7 +96,7 @@
   z-index: 1;
   transition: 0.5s;
 }
-.dropdown-content a {
+.dropdown-content a, .dropdown-content span {
   color: black;
   padding: 12px 16px;
   border-bottom: 1px solid black;
@@ -101,7 +104,7 @@
   display: block;
   user-select: none;
 }
-.dropdown-content a:hover {
+.dropdown-content a:hover, .dropdown-content span:hover {
   background-color: greenyellow;
 }
 
@@ -156,6 +159,11 @@
   align-items: center;
   width: 100%;
   gap: 40px;
+}
+.login-contents form .error-message, .signup-contents form .error-message{
+  color: red;
+  font-weight: 200;
+  font-size: 14px;
 }
 /* Login profile */
 /* .login-btn {
@@ -246,6 +254,18 @@
   border: none;
   border-radius: 5px;
   background-color: #143601;
+}
+
+.error-page {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+}
+.error-page .error-contents {
+  padding-top: 50px;
+  color: white;
 }
 
 /* For mobile Screen */

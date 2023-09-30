@@ -6,10 +6,14 @@ import { Link } from "react-router-dom";
 const Menu = () => {
   const authContext = useContext(AuthContext);
 
+  const logout = () => {
+    authContext.logout();
+  };
+
   return (
     <div className="menu">
       <div className="dropdown menu-btn">
-        <a className="dropbtn">Menu</a>
+        <span className="dropbtn">Menu</span>
         <div className="dropdown-content">
           {!authContext.isLoggedIn && (
             <Link to="/login" className="dropbtn" id="login-nav">
@@ -21,44 +25,54 @@ const Menu = () => {
               Join US
             </Link>
           )}
-          <a className="dropbtn">Map</a>
-          <a className="dropbtn">About US</a>
-          <a className="dropbtn">Environment</a>
+          <Link to="/map" className="dropbtn">Map</Link>
+          <Link to="/about" className="dropbtn">About US</Link>
+          <Link to="/environment" className="dropbtn">
+            Environment
+          </Link>
+          {authContext.isLoggedIn && (
+            <span onClick={logout} className="dropbtn" style={{color : 'white'}}>
+              Logout
+            </span>
+          )}
         </div>
       </div>
       <div className="dropdown">
-        <Link to="/" className="dropbtn">Home</Link>
+        <Link to="/" className="dropbtn">
+          Home
+        </Link>
       </div>
       <div className="dropdown">
-        <a className="dropbtn">Map</a>
+        <Link to="/map" className="dropbtn">Map</Link>
       </div>
       <div className="dropdown">
-        <a className="dropbtn">About US</a>
+        <Link to="/about" className="dropbtn">About US</Link>
         <div className="dropdown-content">
-          <a href="#">Our Services</a>
-          <a href="#">Team</a>
-          <a href="#">About Project</a>
+          <Link to="/about">Our Services</Link>
+          <Link to="/about">Team</Link>
+          <Link to="/about">About Project</Link>
         </div>
       </div>
       <div className="dropdown">
-        <Link to="/environment" className="dropbtn">Environment</Link>
+        <Link to="/environment" className="dropbtn">
+          Environment
+        </Link>
       </div>
 
-      
       {!authContext.isLoggedIn && (
         <div className="dropdown">
-          <Link to="/signup" className="dropbtn">Join US</Link>
+          <Link to="/signup" className="dropbtn">
+            Join US
+          </Link>
         </div>
       )}
       {authContext.isLoggedIn && (
         <div className="dropdown profile-div">
-          <a className="dropbtn profile">
+          <span className="dropbtn profile">
             <img src={userPng} alt="profile" />
-          </a>
+          </span>
           <div className="dropdown-content profile-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+            <span onClick={logout}>Logout</span>
           </div>
         </div>
       )}

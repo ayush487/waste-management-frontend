@@ -1,48 +1,74 @@
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { sendSignupRequest } from "../store/send-request";
 
 const SignupPage = () => {
   const navigate = useNavigate();
+  const [signupError, setSignupError] = useState(null)
+  const usernameRef = useRef();
+  const passwordRef = useRef();
+  const checkboxRef = useRef();
+
+  const [signingUp, setSigningUp] = useState(false)
+
+  const signup = (event) => {
+    event.preventDefault();
+    const enteredUsername = usernameRef.current.value;
+    const enteredPassword = passwordRef.current.value;
+    const isCheckboxSelected = checkboxRef.current.checked;
+    if (!isCheckboxSelected) {
+      return;
+    }
+    sendSignupRequest({
+      email: enteredUsername,
+      password: enteredPassword,
+    }, navigate, setSigningUp, setSignupError);
+  };
+
   const removeLoginPageHandler = () => {
     navigate("/");
   };
   return (
-    <div class="signup-page" id="signup-page">
+    <div className="signup-page" id="signup-page">
       <div
-        class="signup-page-overlay"
+        className="signup-page-overlay"
         id="signup-page-overlay"
         onClick={removeLoginPageHandler}
       ></div>
-      <div class="signup-contents">
-        <h1 class="signup-heading">Sign Up</h1>
-        <form id="form-signup">
-          <div class="input-group">
-            <label for="signup-user-input">Username</label>
+      <div className="signup-contents">
+        <h1 className="signup-heading">Sign Up</h1>
+        <form id="form-signup" onSubmit={signup}>
+          <div className="input-group">
+            <label htmlFor="signup-user-input">Username</label>
             <br />
             <input
               type="text"
               id="signup-user-input"
               required
               placeholder="Email/Mobile Number"
+              ref={usernameRef}
             />
           </div>
-          <div class="input-group">
-            <label for="signup-password-input">Password</label>
+          <div className="input-group">
+            <label htmlFor="signup-password-input">Password</label>
             <br />
             <input
               type="text"
               id="signup-password-input"
               required
               placeholder="Password"
+              ref={passwordRef}
             />
           </div>
 
-          <div class="checkbox-group">
-            <input type="checkbox" id="checkbox-input" required />
-            <label for="checkbox-input">Accept Terms & Conditions</label>
+          <div className="checkbox-group">
+            <input type="checkbox" id="checkbox-input" ref={checkboxRef} />
+            <label htmlFor="checkbox-input">Accept Terms & Conditions</label>
             <br />
           </div>
-          <div class="submit">
-            <button id="signup-btn">Signup</button>
+          {signupError && <p className="error-message">{signupError}</p>}
+          <div className="submit">
+            <button id="signup-btn">{signingUp ? <i className="fa-solid fa-spinner fa-spin fa-lg"></i> : 'Signup'}</button>
           </div>
         </form>
       </div>

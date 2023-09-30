@@ -4,7 +4,7 @@ const EnvironmentArticle = () => {
   return (
     <article className={classes.article}>
       <div className={classes.content}>
-        <h1>Waste Management</h1>
+        <h1 id="waste-management-header">Waste Management</h1>
         <br />
         <span className="garbage-image">
           <img
@@ -101,7 +101,7 @@ const EnvironmentArticle = () => {
         </ol>
         <br />
 
-        <h3>
+        <h3 id="waste-management-india">
           <u>Present Status of Waste Management in India</u>
         </h3>
         <span className="garbage-image">
@@ -141,7 +141,7 @@ const EnvironmentArticle = () => {
           <li>Urban Areas = 5161 (Cities / Towns) </li>
         </ul>
 
-        <h3>
+        <h3 id="magnitube-of-problem">
           <u>Magnitude Of Problem</u>
         </h3>
         <p>
@@ -159,7 +159,7 @@ const EnvironmentArticle = () => {
           practiced in most of the cities.
         </p>
 
-        <h3>
+        <h3 id="quantity-of-waste">
           <u>Quantity Of Waste Generation</u>
         </h3>
         <p>
@@ -172,7 +172,7 @@ const EnvironmentArticle = () => {
           scientifically managed would be 72.5% of total waste.
         </p>
 
-        <h3>
+        <h3 id="reasons-improper-management">
           <u>Reasons of Improper Management Of Waste</u>
         </h3>
         <ul className={classes["ul-problem-list"]}>
@@ -197,7 +197,7 @@ const EnvironmentArticle = () => {
           </li>
         </ul>
 
-        <h3>
+        <h3 id="public-health-disaster">
           <u>Public Health Disaster</u>
         </h3>
         <p>
@@ -217,7 +217,7 @@ const EnvironmentArticle = () => {
           <li>Typhoid</li>
         </ul>
 
-        <h3>
+        <h3 id="improvement-opportunities">
           <u>Opportunities for Improvement:</u>
         </h3>
         <ol className={classes["ol-problem-list"]}>
@@ -263,7 +263,7 @@ const EnvironmentArticle = () => {
         <br />
 
         {/* This is last line */}
-        <h3>Conclusion:</h3>
+        <h3 id="conclusion-article">Conclusion:</h3>
         <p>
           Waste management in India is a multifaceted challenge, but it is one
           that can be addressed with a combination of innovative solutions,

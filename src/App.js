@@ -9,6 +9,8 @@ import ErrorPage from "./pages/ErrorPage";
 import SignupPage from "./pages/SignupPage";
 import AuthContext from "./store/AuthContext";
 import EnvironmentPage from "./pages/EnvironmentPage";
+import MapPage from "./pages/MapPage";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   const authContext = useContext(AuthContext);
@@ -26,6 +28,8 @@ function App() {
             element={authContext.isLoggedIn ? <HomePage /> : <SignupPage />}
           />
           <Route path="/environment" element={<EnvironmentPage />} />
+          <Route path="/map" element={<MapPage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Layout>
